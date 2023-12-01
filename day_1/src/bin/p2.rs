@@ -1,7 +1,7 @@
 use std::{fs::File, io::Read};
 
 fn parse_line(s: String) -> u32{
-    let new = s.replace("nine", "9").replace("eight", "8").replace("seven", "7").replace("six", "6").replace("five", "5").replace("four", "4").replace("three", "3").replace("two", "2").replace("one", "1");
+    let new = s.replace("nine", "n9e").replace("eight", "e8t").replace("seven", "s7n").replace("six", "s6x").replace("five", "f5e").replace("four", "f4r").replace("three", "t3e").replace("two", "t2o").replace("one", "o1e").replace("zero", "z0o");
     
     let c: Vec<char> = new.chars().filter(|c| c.is_numeric()).collect();
     let str = c.get(0).unwrap().to_string() + &c.last().unwrap().to_string();
@@ -17,7 +17,7 @@ fn read_file_to_vec(path: &str) -> Vec<String>{
 }
 
 fn main(){
-    let s: u32 = read_file_to_vec("data.txt").iter().map(|f| parse_line(f.to_string())).sum();
+    let s: u32 = read_file_to_vec("data2.txt").iter().map(|f| parse_line(f.to_string())).sum();
     println!("{}", s)
 }
 
