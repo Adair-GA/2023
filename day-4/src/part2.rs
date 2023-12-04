@@ -40,15 +40,12 @@ pub fn process(
             dbg!(i);
         }
         let reps: usize = card.get_puntuacion();
-        dbg!(card_cuantities.get(card).unwrap());
-        for _ in 1_u32..=*card_cuantities.get(card).unwrap(){
-            for add_to in i+1..=i+reps {
-                if reps == 0 {break;}
-                let card_to_repeat = result.get(add_to);
-                if !card_to_repeat.is_some() {break;}
-                let q = card_cuantities.get(card_to_repeat.unwrap()).unwrap() + 1;
-                card_cuantities.insert(card_to_repeat.unwrap().clone(), q);
-            }
+        for add_to in i+1..=i+reps {
+            if reps == 0 {break;}
+            let card_to_repeat = result.get(add_to);
+            if !card_to_repeat.is_some() {break;}
+            let q = card_cuantities.get(card_to_repeat.unwrap()).unwrap() + *card_cuantities.get(card).unwrap();
+            card_cuantities.insert(card_to_repeat.unwrap().clone(), q);
         }
     }
 
